@@ -38,13 +38,15 @@
 
                 <!-- Đăng nhập / Đăng ký -->
                 <div class="d-flex">
-                    <a href="#" class="btn btn-outline-light me-2">Đăng nhập</a>
-                    <a href="#" class="btn btn-light btn-outline-dark">Đăng ký</a>
+                    <a href="/login/log" class="btn btn-outline-light me-2" >Đăng nhập</a>
+                    <a href="/register/reg" class="btn btn-light btn-outline-dark" >Đăng ký</a>
                 </div>
             </div>
         </div>
     </nav>
-
+   
+   
+    <!-- kkkkkk -->
     <div class="container mt-4">
         <article class="row p-3 border rounded shadow-lg">
             <!-- Cột bên trái (3 phần) -->
@@ -92,12 +94,15 @@
     </div>
 
     <div class="container-lg mt-2">
-        <div class="row p-1 rounded shadow-lg" >
-            <div class="col-6 col-md-6 col-lg-3 rounded-3 d-flex align-items-center" th:each="product : ${products}" >
-                <img th:src="@{/img/{image}(image=${product.image})}" style="max-height: 200px; max-width: 100px;" class="rounded-3">
+        <div class="row p-1 rounded shadow-lg">
+            <div class="col-6 col-md-6 col-lg-3 rounded-3 d-flex align-items-center"
+                th:each="product : ${sanPhamIphone}">
+                <img th:src="@{/img/{image}(image=${product.image})}" style="max-height: 200px; max-width: 100px;"
+                    class="rounded-3">
                 <div class="text-center ms-2">
                     <p class="font-monospace small" th:text="${product.productName}"></p>
-                    <p class="font-monospace small" th:text="${#numbers.formatInteger(product.price, 0, 'COMMA') + ' VNĐ'}"></p>
+                    <p class="font-monospace small"
+                        th:text="${#numbers.formatInteger(product.price, 0, 'COMMA') + ' VNĐ'}"></p>
                     <div class="d-flex justify-content-around">
                         <a href="" class="text-decoration-none text-dark small">mua</a>
                         <a href="" class="text-decoration-none text-dark small">thêm</a>
@@ -109,23 +114,67 @@
     <!-- //// -->
     <div class="container-lg mt-2">
         <div class="row p-1 rounded shadow-lg">
-            <div class="col-6 col-md-6 col-lg-3 rounded-3 d-flex align-items-center" th:each="product : ${products}" >
-                <img th:src="@{/img/{image}(image=${product.image})}" style="max-height: 200px; max-width: 100px;" class="rounded-3">
+            <div class="col-6 col-md-6 col-lg-3 rounded-3 d-flex align-items-center"
+                th:each="product : ${sanPhamMacBook}">
+                <img th:src="@{/img/{image}(image=${product.image})}" style="max-height: 200px; max-width: 100px;"
+                    class="rounded-3">
                 <div class="text-center ms-2">
                     <p class="font-monospace small" th:text="${product.productName}"></p>
-                    <p class="font-monospace small" th:text="${#numbers.formatInteger(product.price, 0, 'COMMA') + ' VNĐ'}"></p>
+                    <p class="font-monospace small"
+                        th:text="${#numbers.formatInteger(product.price, 0, 'COMMA') + ' VNĐ'}"></p>
                     <div class="d-flex justify-content-around">
                         <a href="" class="text-decoration-none text-dark small">mua</a>
                         <a href="" class="text-decoration-none text-dark small">thêm</a>
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
 
 
+    <footer class="bg-dark text-light pt-5 pb-4 mt-5">
+        <div class="container text-md-left">
+            <div class="row">
+                <!-- Logo + Mô tả -->
+                <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-1">
+                    <h5 class="text-uppercase fw-bold mb-4">AppleShop</h5>
+                    <p>Apple Shop mang đến trải nghiệm mua sắm các sản phẩm Apple chính hãng.</p>
+                </div>
 
+                <!-- Liên kết -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-1">
+                    <h6 class="text-uppercase fw-bold mb-4">Liên kết</h6>
+                    <p><a href="#" class="text-reset text-decoration-none">Trang chủ</a></p>
+                    <p><a href="#" class="text-reset text-decoration-none">Về chúng tôi</a></p>
+                    <p><a href="#" class="text-reset text-decoration-none">Dịch vụ</a></p>
+                    <p><a href="#" class="text-reset text-decoration-none">Liên hệ</a></p>
+                </div>
+
+                <!-- Chính sách -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-1">
+                    <h6 class="text-uppercase fw-bold mb-4">Chính sách</h6>
+                    <p><a href="#" class="text-reset text-decoration-none">Bảo mật</a></p>
+                    <p><a href="#" class="text-reset text-decoration-none">Điều khoản</a></p>
+                    <p><a href="#" class="text-reset text-decoration-none">FAQs</a></p>
+                    <p><a href="#" class="text-reset text-decoration-none">Hỗ trợ</a></p>
+                </div>
+
+                <!-- Mạng xã hội -->
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-1">
+                    <h6 class="text-uppercase fw-bold mb-4">Kết nối</h6>
+                    <a href="#" class="me-3 text-reset"><i class="bi bi-facebook fs-4"></i></a>
+                    <a href="#" class="me-3 text-reset"><i class="bi bi-instagram fs-4"></i></a>
+                    <a href="#" class="me-3 text-reset"><i class="bi bi-twitter fs-4"></i></a>
+                    <a href="#" class="me-3 text-reset"><i class="bi bi-youtube fs-4"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Dòng bản quyền -->
+        <div class="text-center p-3 mt-1 border-top border-secondary">
+            © 2025 AppleShop. Cam on quy khach da ghe shop.
+        </div>
+    </footer>
 
 
 
