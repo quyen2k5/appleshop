@@ -1,4 +1,4 @@
-package com.exe.shojin.model;
+package com.edu.appleshop.model;
 
 import java.time.LocalDate;
 
