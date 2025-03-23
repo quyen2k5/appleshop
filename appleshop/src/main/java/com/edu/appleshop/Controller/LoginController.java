@@ -1,0 +1,41 @@
+package com.exe.shojin.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.exe.shojin.model.User;
+import com.exe.shojin.service.UserService;
+
+import jakarta.servlet.http.HttpSession;
+
+@Controller
+@RequestMapping("/login")
+public class LoginController {
+    @Autowired
+    private UserService userService;
+    
+    @GetMapping("/log")
+    public String showForm(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "login";
+    }
+    @PostMapping("/log")
+    public String login(User user, Model model, HttpSession session) {
+        User exUser = userService.findById(user.getUsername());
+        if (exUser != null && exUser.getPassword().equals(user.getPassword())) {
+            session.setAttribute("logUser", exUser);
+            if ("admin".equals(exUser.getRole())) {
+                return "redirect:/index/admin";
+            } else if("user".equals(exUser.getRole())) {
+                return "redirect:/index/user";
+            }
+        }
+        model.addAttribute("error", "sai username or password");
+        return "login";
+    }
+}
