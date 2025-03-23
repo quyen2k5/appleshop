@@ -6,7 +6,8 @@ import com.edu.appleshop.model.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, String> {
 
-    
+    List<Product> findByCategory(String category);
+
 
 
 }
