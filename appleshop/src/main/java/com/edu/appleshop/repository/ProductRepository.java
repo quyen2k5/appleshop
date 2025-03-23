@@ -1,4 +1,4 @@
-package com.exe.shojin.repository;
+package com.edu.appleshop.repository;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
