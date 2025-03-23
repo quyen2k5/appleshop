@@ -1,5 +1,5 @@
-package com.exe.shojin.service;
-import com.exe.shojin.model.User;
+package com.edu.appleshop.service;
+import com.edu.appleshop.model.User;
 public interface UserService {
     void add(User user);
     boolean existsByUsername(String username);
