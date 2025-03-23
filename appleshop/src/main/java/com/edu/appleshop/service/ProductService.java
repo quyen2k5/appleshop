@@ -5,5 +5,6 @@ import com.edu.appleshop.model.Product;
 public interface ProductService {
 
     Iterable<Product> findAll();
+    List<Product> getProductsByLoai(String category);
 
 }
