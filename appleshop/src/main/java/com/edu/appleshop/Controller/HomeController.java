@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.exe.shojin.service.ProductService;
+import com.edu.appleshop.service.ProductService;
 
 @Controller
 @RequestMapping("")
