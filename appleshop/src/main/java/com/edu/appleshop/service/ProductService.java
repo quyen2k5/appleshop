@@ -1,6 +1,6 @@
-package com.exe.shojin.service;
+package com.edu.appleshop.service;
 
-import com.exe.shojin.model.Product;
+import com.edu.appleshop.model.Product;
 
 public interface ProductService {
 
