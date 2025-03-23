@@ -14,6 +14,10 @@ public class ProductServiceImpl implements ProductService {
     public Iterable<Product> findAll() {
         return productRepository.findAll();
     }
+    public List<Product> getProductsByLoai(String category) {
+        return productRepository.findByCategory(category);
+    }
+    
 
     
 
