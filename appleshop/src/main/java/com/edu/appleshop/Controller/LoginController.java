@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.edu.appleshop.model.User;
-import com.edu.appleshop.service.UserService;
+import com.exe.shojin.model.User;
+import com.exe.shojin.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -35,7 +35,7 @@ public class LoginController {
                 return "redirect:/index/user";
             }
         }
-        model.addAttribute("error", "sai username or password");
+        model.addAttribute("error", "false username hoặc password");
         return "login";
     }
 }
