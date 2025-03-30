@@ -1,8 +1,8 @@
-package com.exe.shojin.repository;
+package com.edu.appleshop.repository;
 
-import com.exe.shojin.model.Cart;
-import com.exe.shojin.model.CartItem;
-import com.exe.shojin.model.Product;
+import com.edu.appleshop.model.Cart;
+import com.edu.appleshop.model.CartItem;
+import com.edu.appleshop.model.Product;
 
 import jakarta.transaction.Transactional;
 
