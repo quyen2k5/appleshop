@@ -1,8 +1,8 @@
-package com.exe.shojin.service;
+package com.edu.appleshop.service;
 
 import java.util.List;
 
-import com.exe.shojin.model.CartItem;
+import com.edu.appleshop.model.CartItem;
 
 public interface CartService {
     String addToCart(String username, String productID);
