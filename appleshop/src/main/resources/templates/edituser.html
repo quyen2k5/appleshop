@@ -11,65 +11,81 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <div class="row justify-content-center mt-4">
-            <div class="col-md-6">
-                <div class="card shadow-lg">
-                    <div class="card-header bg-primary text-white text-center">
-                        <h4>Cập Nhật Thông Tin</h4>
-                    </div>
-                    <div class="card-body">
-                        <form th:action="@{/admin/saveUser}" th:object="${users}" method="post">
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" id="username" name="username" th:field="*{username}"
-                                    class="form-control" required>
+   <div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4><i class="fas fa-user-edit me-2"></i>Cập Nhật Thông Tin</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form th:action="@{/admin/saveUser}" th:object="${users}" method="post">
+                        
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" id="username" name="username" th:field="*{username}" class="form-control" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="fullname" class="form-label">Full Name</label>
-                                <input type="text" id="fullname" name="fullname" th:field="*{fullname}"
-                                    class="form-control" required>
-                            </div>
+                        </div>
 
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <div class="input-group">
-                                    <input type="text" id="password" name="password" th:field="*{password}"
-                                        class="form-control" required>
-                                   
-                                </div>
+                        <div class="mb-3">
+                            <label for="fullname" class="form-label">Full Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-id-badge"></i></span>
+                                <input type="text" id="fullname" name="fullname" th:field="*{fullname}" class="form-control" required>
                             </div>
+                        </div>
 
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" id="email" name="email" th:field="*{email}" class="form-control"
-                                    required>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" id="password" name="password" th:field="*{password}" class="form-control" required>
                             </div>
+                        </div>
 
-                            <div class="mb-3">
-                                <label for="phone" class="form-label">Phone</label>
-                                <input type="text" id="phone" name="phone" th:field="*{phone}" class="form-control"
-                                    required>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input type="email" id="email" name="email" th:field="*{email}" class="form-control" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="image" class="form-label">Image</label>
-                                <input type="file" id="image" name="image" th:field="*{image}" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                <input type="text" id="phone" name="phone" th:field="*{phone}" class="form-control" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="dateofbirth" class="form-label">Date of Birth</label>
-                                <input type="date" id="dateofbirth" name="dateofbirth" th:field="*{dateofbirth}"
-                                    class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image</label>
+                            <input type="file" id="image" name="image" th:field="*{image}" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="dateofbirth" class="form-label">Date of Birth</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                                <input type="date" id="dateofbirth" name="dateofbirth" th:field="*{dateofbirth}" class="form-control" required>
                             </div>
-                            <input type="hidden" id="role" name="role" th:field="*{role}">
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-success">Cập Nhật</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+
+                        <input type="hidden" id="role" name="role" th:field="*{role}">
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success"><i class="fas fa-save me-2"></i>Cập Nhật</button>
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 </body>
 </html>
