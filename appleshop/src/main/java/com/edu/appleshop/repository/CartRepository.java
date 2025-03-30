@@ -1,7 +1,7 @@
-package com.exe.shojin.repository;
+package com.edu.appleshop.repository;
 
 
-import com.exe.shojin.model.Cart;
+import com.edu.appleshop.model.Cart;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
