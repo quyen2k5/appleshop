@@ -1,4 +1,4 @@
-package com.exe.shojin.Controller;
+package com.edu.appleshop.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.exe.shojin.model.Product;
-import com.exe.shojin.service.ProductService;
+import com.edu.appleshop.model.Product;
+import com.edu.appleshop.service.ProductService;
 
 @Controller
 @RequestMapping("/product")
