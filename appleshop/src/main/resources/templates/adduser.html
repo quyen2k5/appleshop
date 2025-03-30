@@ -14,40 +14,85 @@
 
 <body>
 
-    <form class="mb-3 border p-3 shadow" th:action="@{/admin/saveUser}" method="post" th:object="${users}">
-        <div class="row g-3">
-            <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Tên đăng nhập" th:field="*{username}" required>
-            </div>
-            <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Họ và tên" th:field="*{fullname}" required>
-            </div>
-            <div class="col-md-4">
-                <input type="password" class="form-control" placeholder="Mật khẩu" th:field="*{password}" required>
-            </div>
-            
-            <div class="col-md-4">
-                <input type="email" class="form-control" placeholder="Email" th:field="*{email}" required>
-            </div>
-            <div class="col-md-4">
-                <input type="number" class="form-control" placeholder="Số điện thoại" th:field="*{phone}" required>
-            </div>
-            <div class="col-md-4">
+   <div class="container mt-5">
+    <div class="form-container">
+        <h4 class="text-center text-primary mb-4"><i class="fas fa-user-plus me-2"></i>Thêm Người Dùng</h4>
 
-                <input type="file" class="form-control" th:field="*{image}" required>
+        <form th:action="@{/admin/saveUser}" method="post" th:object="${users}">
+            <div class="row g-3">
 
-            </div>
-            <div class="col-md-4">
-                <input type="date" id="dateofbirth" name="dateofbirth" th:field="*{dateofbirth}" required>
-            </div>
-            <div class="col-md-4">
+                <!-- Tên đăng nhập -->
+                <div class="col-md-4">
+                    <label class="form-label">Tên đăng nhập</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Tên đăng nhập" th:field="*{username}" required>
+                    </div>
+                </div>
+
+                <!-- Họ và tên -->
+                <div class="col-md-4">
+                    <label class="form-label">Họ và tên</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                        <input type="text" class="form-control" placeholder="Họ và tên" th:field="*{fullname}" required>
+                    </div>
+                </div>
+
+                <!-- Mật khẩu -->
+                <div class="col-md-4">
+                    <label class="form-label">Mật khẩu</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        <input type="password" class="form-control" placeholder="Mật khẩu" th:field="*{password}" required>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="col-md-4">
+                    <label class="form-label">Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        <input type="email" class="form-control" placeholder="Email" th:field="*{email}" required>
+                    </div>
+                </div>
+
+                <!-- Số điện thoại -->
+                <div class="col-md-4">
+                    <label class="form-label">Số điện thoại</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                        <input type="number" class="form-control" placeholder="Số điện thoại" th:field="*{phone}" required>
+                    </div>
+                </div>
+
+                <!-- Hình ảnh -->
+                <div class="col-md-4">
+                    <label class="form-label">Ảnh đại diện</label>
+                    <input type="file" class="form-control" th:field="*{image}" required>
+                </div>
+
+                <!-- Ngày sinh -->
+                <div class="col-md-4">
+                    <label class="form-label">Ngày sinh</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                        <input type="date" class="form-control" th:field="*{dateofbirth}" required>
+                    </div>
+                </div>
+
+                <!-- Vai trò (ẩn) -->
                 <input type="hidden" id="role" name="role" th:field="*{role}" readonly>
+
+                <!-- Nút thêm -->
+                <div class="col-md-12 d-grid mt-3">
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-plus-circle me-2"></i>Thêm người dùng</button>
+                </div>
+
             </div>
-            <div class="col-md-4 d-grid">
-                <button class="btn btn-primary" type="submit">Thêm người dùng</button>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
+</div>
 
 
 
