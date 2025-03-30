@@ -1,7 +1,7 @@
-package com.exe.shojin.Controller;
+package com.edu.appleshop.Controller;
 
-import com.exe.shojin.model.*;
-import com.exe.shojin.service.*;
+import com.edu.appleshop.model.*;
+import com.edu.appleshop.service.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
