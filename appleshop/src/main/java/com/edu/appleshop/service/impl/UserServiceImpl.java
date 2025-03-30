@@ -1,4 +1,5 @@
 package com.edu.appleshop.service.impl;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,9 @@ import com.edu.appleshop.service.UserService;
 public class UserServiceImpl implements UserService {
     @Autowired
    private UserRepository userRepository;
-
+    public Iterable<User> findAll(){
+        return userRepository.findAll();
+    }
   
     public void add(User user) {
         userRepository.save(user);
@@ -26,5 +29,8 @@ public class UserServiceImpl implements UserService {
        Optional<User> user = userRepository.findById(username);
        return user.orElse(null);
     }
-
+ 
+    public void delete(String username){
+         userRepository.deleteById(username);
+    }
 }
