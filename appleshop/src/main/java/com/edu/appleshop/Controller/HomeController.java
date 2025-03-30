@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
-import com.exe.shojin.model.Product;
-import com.exe.shojin.model.User;
-import com.exe.shojin.service.ProductService;
+import com.edu.appleshop.model.Product;
+import com.edu.appleshop.model.User;
+import com.edu.appleshop.service.ProductService;
 
 import jakarta.servlet.http.HttpSession;
 
