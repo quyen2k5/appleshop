@@ -1,17 +1,17 @@
-package com.exe.shojin.service.impl;
+package com.edu.appleshop.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.exe.shojin.model.Cart;
-import com.exe.shojin.model.CartItem;
-import com.exe.shojin.model.Product;
-import com.exe.shojin.repository.CartItemRepository;
-import com.exe.shojin.repository.CartRepository;
-import com.exe.shojin.repository.ProductRepository;
-import com.exe.shojin.service.CartService;
+import com.edu.appleshop.model.Cart;
+import com.edu.appleshop.model.CartItem;
+import com.edu.appleshop.model.Product;
+import com.edu.appleshop.repository.CartItemRepository;
+import com.edu.appleshop.repository.CartRepository;
+import com.edu.appleshop.repository.ProductRepository;
+import com.edu.appleshop.service.CartService;
 
 import jakarta.transaction.Transactional;
 @Service
