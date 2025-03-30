@@ -1,4 +1,4 @@
-package com.exe.shojin.Controller;
+package com.edu.appleshop.Controller;
 
 
 import org.springframework.stereotype.Controller;
