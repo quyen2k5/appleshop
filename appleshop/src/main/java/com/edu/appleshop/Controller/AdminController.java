@@ -1,4 +1,22 @@
+package com.edu.appleshop.Controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
+
+import com.edu.appleshop.model.Product;
+import com.edu.appleshop.model.User;
+import com.edu.appleshop.service.ProductService;
+import com.edu.appleshop.service.UserService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/admin")
