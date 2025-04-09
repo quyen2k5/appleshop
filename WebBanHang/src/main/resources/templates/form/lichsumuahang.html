@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Apple 🍏</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .product-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+        }
+        .order-card {
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .order-header {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .order-footer {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            text-align: right;
+            font-weight: bold;
+        }
+        .status-0 { color: #6c757d; } /* Chờ xử lý */
+        .status-1 { color: #0d6efd; } /* Đã xác nhận */
+        .status-2 { color: #198754; } /* Đã giao hàng */
+        .status-3 { color: #dc3545; } /* Đã hủy */
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="mb-4">Lịch sử mua hàng</h1>
+        
+        <div th:if="${orders.empty}">
+            <div class="alert alert-info">
+                Bạn chưa có đơn hàng nào.
+            </div>
+        </div>
+        
+        <div th:each="order : ${orders}" class="order-card">
+            <div class="order-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Mã đơn hàng: <span th:text="${order.id}"></span></h5>
+                        <div>Ngày đặt: <span th:text="${#temporals.format(order.createdDate, 'dd/MM/yyyy HH:mm')}"></span></div>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <div>Trạng thái: 
+                            <span th:classappend="'status-' + ${order.status}"
+                                  th:text="${order.status == 0} ? 'Chờ xử lý' : 
+                                           ${order.status == 1} ? 'Đã xác nhận' : 
+                                           ${order.status == 2} ? 'Đã giao hàng' : 
+                                           'Đã hủy'"></span>
+                        </div>
+                        <div>Kích hoạt: <span th:text="${order.activated} ? 'Có' : 'Không'"></span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-3">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Giá</th>
+                            <th>Tổng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="detail : ${order.ordersdetails}">
+                            <td th:text="${detail.id}"></td>
+                            <td>
+                                <img th:src="@{${detail.product.img}}" alt="Ảnh sản phẩm" class="product-img" />
+                            </td>
+                            <td th:text="${detail.product.title}"></td>
+                            <td th:text="${detail.quantity}"></td>
+                            <td th:text="${#numbers.formatDecimal(detail.price, 0, 'COMMA', 0, 'POINT')} + ' VND'"></td>
+                            <td th:text="${#numbers.formatDecimal(detail.quantity * detail.price, 0, 'COMMA', 0, 'POINT')} + ' VND'"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="order-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>Địa chỉ giao hàng: <span th:text="${order.shippingAddress}"></span></div>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <div class="fs-5">Tổng thanh toán: 
+                            <span th:text="${#numbers.formatDecimal(
+                                order.ordersdetails.![quantity * price].sum(), 
+                                0, 'COMMA', 0, 'POINT')} + ' VND'"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

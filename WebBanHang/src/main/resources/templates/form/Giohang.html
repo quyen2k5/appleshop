@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Website Apple 🍏</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+    }
+
+    header {
+      background: linear-gradient(90deg, #0d6efd, #6610f2);
+      padding: 20px 30px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-link {
+      color: #fff !important;
+      transition: all 0.3s ease-in-out;
+      font-weight: bold;
+    }
+
+    .nav-link:hover {
+      color: #ffc107 !important;
+      transform: scale(1.1);
+      text-shadow: 2px 2px 5px rgba(255, 193, 7, 0.5);
+    }
+
+    .cart-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      flex: 1;
+    }
+
+    .cart-title {
+      font-weight: bold;
+      color: #0d6efd;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .cart-item {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cart-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .cart-summary {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .total-price {
+      font-size: 24px;
+      font-weight: bold;
+      color: #6610f2;
+    }
+
+    .btn-checkout {
+      background: linear-gradient(90deg, #0d6efd, #6610f2);
+      color: white;
+      font-size: 18px;
+      padding: 12px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      border: none;
+      width: 100%;
+    }
+
+    .btn-checkout:hover {
+      background: linear-gradient(90deg, #6610f2, #0d6efd);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-outline-secondary {
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-secondary:hover {
+      background: #6c757d;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* footer */
+    footer {
+      background-color: white;
+      /* Đổi màu nền thành trắng */
+      color: black;
+      /* Đổi màu chữ thành đen để dễ đọc */
+      text-align: center;
+      padding: 20px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    footer a {
+      color: #007bff;
+      /* Màu link giống với tông màu của Thegioididong */
+      transition: color 0.3s ease-in-out;
+    }
+
+    footer a:hover {
+      color: #0056b3;
+      /* Màu tối hơn khi hover */
+    }
+
+    .footer {
+      background-color: white;
+      /* Đổi màu nền thành trắng */
+      color: black;
+      /* Đổi màu chữ thành đen để dễ đọc */
+      padding: 40px 0;
+      font-family: "Arial", sans-serif;
+      box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+      /* Giữ hiệu ứng bóng nhẹ */
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 20px;
+    }
+
+    .footer-heading {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #010102;
+      /* Màu xanh giống với link của Thegioididong */
+    }
+
+    .footer-text {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      color: black;
+      /* Đảm bảo màu chữ dễ đọc trên nền trắng */
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      color: black;
+      /* Đổi màu link thành đen để đồng bộ */
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: #007bff;
+      /* Màu xanh khi hover để tạo điểm nhấn */
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 20px 0;
+      background-color: white;
+      /* Đổi màu nền footer bottom thành trắng */
+      margin-top: 20px;
+      border-top: 1px solid #ddd;
+      /* Thêm viền để phân cách */
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      font-size: 14px;
+      color: black;
+      /* Đổi màu chữ thành đen */
+    }
+
+    /* CSS cho logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      /* Loại bỏ gạch chân mặc định của thẻ <a> */
+    }
+
+    .logo-img {
+      height: 50px;
+      /* Điều chỉnh chiều cao của logo */
+      width: auto;
+      /* Giữ tỷ lệ khung hình */
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Header -->
+  <header class="d-flex justify-content-between align-items-center">
+    <!-- Thay thế h1 bằng hình ảnh logo -->
+    <a href="/thienduonganmac" class="logo">
+      <img src="/photos/logo.png" alt="Logo" class="logo-img" />
+    </a>
+    <nav>
+      <ul class="nav">
+        <li><a href="/thienduonganmac" class="nav-link">Trang chủ</a></li>
+        <li th:each="category : ${category}">
+          <a href="#" class="nav-link" th:text="${category.name}"></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Nội dung giỏ hàng -->
+  <div class="container cart-container">
+    <h2 class="cart-title">🛒 Giỏ Hàng Của Bạn</h2>
+    <div class="row">
+      <div class="col-md-8">
+        <div th:each="item : ${cartItems}" class="cart-item d-flex align-items-center">
+          <img th:src="${item.product.img}" alt="Ảnh sản phẩm" class="rounded"
+            style="width: 100px; height: 100px; object-fit: cover" />
+          <div class="ms-4 flex-grow-1">
+            <h5 class="mb-1" th:text="${item.product.title}">Tên sản phẩm</h5>
+            <span class="text-primary"
+              th:text="${#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT')} + ' VND'"></span>
+          </div>
+          <div class="d-flex align-items-center">
+            <form th:action="@{/Giohang/Giam}" method="post">
+              <input type="hidden" name="id" th:value="${item.id}" />
+              <button type="submit" name="action" value="decrease" class="btn btn-sm btn-outline-danger">
+                <i class="bi bi-dash-lg"></i>
+              </button>
+            </form>
+            <span class="mx-3 fw-bold" th:text="${item.quantity}"></span>
+            <form th:action="@{/Giohang/Tang}" method="post">
+              <input type="hidden" name="id" th:value="${item.id}" />
+              <button type="submit" name="action" value="increase" class="btn btn-sm btn-outline-success"><i
+                  class="bi bi-plus-lg"></i></button>
+            </form>
+          </div>
+          <form th:action="@{/Giohang/DeleteOder}" method="post" class="ms-3"
+            onsubmit="return confirm('Bạn có chắc muốn xóa sản phẩm này?')">
+            <input type="hidden" name="id" th:value="${item.id}" />
+            <button type="submit" class="btn btn-sm btn-outline-warning"><i class="bi bi-trash3"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tóm tắt đơn hàng -->
+      <div class="col-md-4">
+        <div class="cart-summary">
+          <h4 class="text-center mb-4">Tóm tắt đơn hàng</h4>
+          <div class="d-flex justify-content-between mb-3">
+            <span>Tổng tiền:</span>
+            <span class="total-price" th:text="${#numbers.formatDecimal(tong, 0, 'COMMA', 0, 'POINT')} + ' VND'"></span>
+          </div>
+          <hr />
+
+          <form th:action="@{/Giohang/Thanhtoan}" method="post" onsubmit="return confirm('Bạn chắc chắn đặt hàng?')">
+            <!-- Trường nhập địa chỉ nhận hàng -->
+            <div class="mb-3">
+              <label for="address" class="form-label">Số điện thoại:</label>
+              <input type="text" class="form-control" id="address" name="address"
+                placeholder="Nhập số điện thoại của bạn" required />
+            </div>
+            <div class="mb-3">
+              <label for="province" class="form-label">Chọn tỉnh/thành phố:</label>
+              <select id="province" name="province" class="form-select" required>
+                <option value="">-- Chọn tỉnh/thành phố --</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="district" class="form-label">Chọn quận/huyện:</label>
+              <select id="district" name="district" class="form-select" required>
+                <option value="">-- Chọn quận/huyện --</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Địa chỉ nhận hàng:</label>
+              <input type="text" class="form-control" id="address" name="address"
+                placeholder="Nhập địa chỉ nơi ở của bạn" required />
+            </div>
+
+
+            <button type="submit" class="btn btn-checkout">
+              <i class="bi bi-credit-card-fill"></i> Thanh toán ngay
+            </button>
+          </form>
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              fetch("/provinces/all")
+                .then(response => response.json())
+                .then(data => {
+                  let provinceSelect = document.getElementById("province");
+                  let districtSelect = document.getElementById("district");
+
+                  // Thêm tỉnh vào dropdown
+                  data.forEach(province => {
+                    let option = document.createElement("option");
+                    option.value = province.name;
+                    option.textContent = province.name;
+                    option.setAttribute("data-id", province.id);
+                    provinceSelect.appendChild(option);
+                  });
+
+                  // Xử lý khi chọn tỉnh
+                  provinceSelect.addEventListener("change", function () {
+                    let selectedProvince = data.find(p => p.name === this.value);
+                    districtSelect.innerHTML = "<option value=''>-- Chọn quận/huyện --</option>";
+
+                    if (selectedProvince) {
+                      selectedProvince.districts.forEach(district => {
+                        let option = document.createElement("option");
+                        option.value = district.name;
+                        option.textContent = district.name;
+                        districtSelect.appendChild(option);
+                      });
+                    }
+                  });
+                })
+                .catch(error => console.error("Lỗi tải danh sách tỉnh/thành:", error));
+            });
+          </script>
+
+          <a href="/thienduonganmac" class="btn btn-outline-secondary mt-3">
+            <i class="bi bi-arrow-left"></i> Tiếp tục mua sắm
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Phần thông tin liên hệ và giới thiệu -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Thông tin SHOP</h4>
+        <p class="footer-text">
+          AppShop là thương hiệu hàng đầu về thời trang bền vững, cam kết mang
+          đến những sản phẩm chất lượng và thân thiện với môi trường.
+        </p>
+        <div class="contact-info">
+          <p>
+            <i class="fas fa-map-marker-alt"></i> 14 Đường Trần Đình Nam, Quận
+            Cẩm Lệ, TP.Đà Nẵng
+          </p>
+          <p><i class="fas fa-phone"></i>0337198492</p>
+          <p><i class="fas fa-envelope"></i> dinhduc9977@gmail.com</p>
+        </div>
+      </div>
+
+      <!-- Phần liên kết nhanh -->
+      <div class="footer-section">
+        <h4 class="footer-heading"></h4>
+        <ul class="footer-links">
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="#">Sản phẩm</a></li>
+          <li><a href="#">Giới thiệu</a></li>
+          <li><a href="#">Liên hệ</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+          <li><a href="#">Điều khoản sử dụng</a></li>
+        </ul>
+      </div>
+
+      <!-- Phần mạng xã hội -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Theo dõi chúng tôi</h4>
+        <div class="social-media">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <!-- Phần đăng ký nhận tin -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Hỗ trợ trức tuyến</h4>
+        <p class="footer-text">
+          Nhận thông tin khuyến mãi và cập nhật mới nhất từ AppShop.
+        </p>
+        <form class="subscribe-form">
+          <input type="email" placeholder="Nhập email của bạn" required />
+          <button type="submit">Đăng ký</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Phần bản quyền -->
+    <div class="footer-bottom">
+      <p class="mb-0">© 2025 AppShop, Inc. Bảo lưu mọi quyền.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

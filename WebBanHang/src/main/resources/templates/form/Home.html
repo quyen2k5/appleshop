@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Website Apple 🍏</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap JS (Optional) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <style>
+    html,
+    body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(to right, #e3f2fd, #ffffff);
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: linear-gradient(90deg, #d1cde9, #2e27ebf2);
+      padding: 10px 20px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-img {
+      height: 50px;
+      width: auto;
+    }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-link {
+      color: #fff !important;
+      font-weight: bold;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .nav-link:hover {
+      color: #ffc107 !important;
+      transform: scale(1.1);
+    }
+
+    .btn-light {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 12px;
+    }
+
+    .gap-3 {
+      gap: 15px;
+    }
+
+    .container {
+      flex: 1;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      border: none;
+      border-radius: 15px;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+    }
+
+
+    .product-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card img {
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .product-card .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+      width: 100%;
+      height: 0;
+      transition: 0.5s ease;
+    }
+
+    .product-card:hover .overlay {
+      height: 100%;
+    }
+
+    .product-card .overlay-content {
+      color: white;
+      font-size: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    /* Custom button styles */
+    .btn-cart,
+    .btn-cart {
+      background: linear-gradient(90deg, #0d6efd, #6610f2);
+    }
+
+    .btn-cart:hover {
+      background: linear-gradient(90deg, #6610f2, #0d6efd);
+      transform: translateY(-2px);
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-custom {
+      background-color: #cfdbe8;
+      /* Màu vàng đặc trưng của TGDĐ */
+      color: #0066CC;
+      /* Màu xanh dương */
+      border: none;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .btn-custom:hover {
+      background-color: #89b2e2;
+      /* Màu vàng nhạt khi hover */
+      color: #004C99;
+      /* Màu xanh dương đậm hơn */
+    }
+
+    .btn-detail {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      border: none;
+      color: white;
+      font-size: 14px;
+      width: 100%;
+      /* Đảm bảo nút chiếm toàn bộ chiều rộng */
+      background: linear-gradient(90deg, #e1dac5, #ff9800);
+    }
+
+    .btn-detail:hover {
+      background: linear-gradient(90deg, #ff9800, #ffc107);
+      transform: translateY(-2px);
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* CSS cho logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      /* Loại bỏ gạch chân mặc định của thẻ <a> */
+    }
+
+    .logo-img {
+      height: 50px;
+      /* Điều chỉnh chiều cao của logo */
+      width: auto;
+      /* Giữ tỷ lệ khung hình */
+    }
+
+    .contact-info p {
+      font-size: 14px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      color: black;
+      /* Đổi màu chữ thành đen */
+    }
+
+    .contact-info i {
+      margin-right: 10px;
+      color: #007bff;
+      /* Đổi màu icon thành xanh giống Thegioididong */
+    }
+
+
+    /* footer */
+    footer {
+      background-color: white;
+      /* Đổi màu nền thành trắng */
+      color: black;
+      /* Đổi màu chữ thành đen để dễ đọc */
+      text-align: center;
+      padding: 20px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    footer a {
+      color: #007bff;
+      /* Màu link giống với tông màu của Thegioididong */
+      transition: color 0.3s ease-in-out;
+    }
+
+    footer a:hover {
+      color: #0056b3;
+      /* Màu tối hơn khi hover */
+    }
+
+    .footer {
+      background-color: white;
+      /* Đổi màu nền thành trắng */
+      color: black;
+      /* Đổi màu chữ thành đen để dễ đọc */
+      padding: 40px 0;
+      font-family: "Arial", sans-serif;
+      box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+      /* Giữ hiệu ứng bóng nhẹ */
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 20px;
+    }
+
+    .footer-heading {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #010102;
+      /* Màu xanh giống với link của Thegioididong */
+    }
+
+    .footer-text {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      color: black;
+      /* Đảm bảo màu chữ dễ đọc trên nền trắng */
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      color: black;
+      /* Đổi màu link thành đen để đồng bộ */
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: #007bff;
+      /* Màu xanh khi hover để tạo điểm nhấn */
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 20px 0;
+      background-color: white;
+      /* Đổi màu nền footer bottom thành trắng */
+      margin-top: 20px;
+      border-top: 1px solid #ddd;
+      /* Thêm viền để phân cách */
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      font-size: 14px;
+      color: black;
+      /* Đổi màu chữ thành đen */
+    }
+
+    .social-media {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-icon {
+      color: black;
+      /* Đổi màu icon thành đen */
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .social-icon:hover {
+      color: #007bff;
+      /* Hover thành màu xanh */
+    }
+
+    .subscribe-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .subscribe-form input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      flex: 1;
+    }
+
+    .subscribe-form button {
+      padding: 10px 20px;
+      background-color: #2372c7;
+      /* Đổi màu nút đăng ký thành xanh */
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .subscribe-form button:hover {
+      background-color: #0056b3;
+    }
+
+    .search-bar-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 450px;
+    }
+
+    .search-form {
+      display: flex;
+      width: 100%;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 25px 0 0 25px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .search-button {
+      background-color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 0 25px 25px 0;
+      cursor: pointer;
+    }
+
+    .search-button i {
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="d-flex align-items-center justify-content-between px-3">
+    <!-- Logo -->
+    <a href="/thienduonganmac" class="logo d-flex align-items-center">
+      <img src="/photos/logo.png" alt="Logo" class="logo-img" />
+    </a>
+
+    <!-- Form tìm kiếm (đặt vào một div chứa flex-grow để căn giữa tốt hơn) -->
+    <div class="flex-grow-1 d-flex justify-content-center">
+      <div class="search-bar-container">
+        <form class="search-form" action="/search" method="GET">
+          <input type="text" class="search-input" name="q" placeholder="Bạn cần tìm gì?" autocomplete="off">
+          <button type="submit" class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Danh mục, User & Giỏ hàng -->
+    <div class="d-flex align-items-center gap-3">
+      <nav>
+        <ul class="nav">
+          <li th:each="category : ${category}">
+            <a th:href="@{/thienduonganmac/{id}(id=${category.id})}" class="nav-link" th:text="${category.name}"></a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- User -->
+      <div th:if="${session.ShowUser != null}" class="dropdown">
+        <a class="btn btn-light dropdown-toggle shadow-sm d-flex align-items-center" href="#" role="button"
+          id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-person-circle"> </i>
+          <!-- <span th:text="${session.ShowUser.fullname}"></span> -->
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li th:if="${session.ShowUser.role}">
+            <a class="dropdown-item" href="http://localhost:8080/Quanlisanpham">
+              Quản lý
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" th:href="@{/Thongtincanhan(id=${session.ShowUser.id})}">
+              Thông tin cá nhân
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" th:href="@{/lichsumuahang(id=${session.ShowUser.id})}">
+              <i class="bi bi-clock-history me-2"></i>Lịch sử mua hàng
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li>
+            <a class="dropdown-item text-danger" href="/logout">Đăng xuất</a>
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Giỏ hàng -->
+      <a class="btn btn-light shadow-sm" href="/Giohang">
+        <i class="fas fa-cart-plus"></i>
+      </a>
+      <div th:if="${session.ShowUser == null}">
+        <a class="btn btn-outline-light me-2" href="/form/Dangnhap">Đăng nhập</a>
+        <a class="btn btn-warning" href="/form/Dangky">Đăng ký</a>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- Bảng giới thiệu -->
+  <div class="container bg-light mt-4" style="background: linear-gradient(90deg, #ffffff, #b3b0f3f2);">
+    <article class="row p-3 border rounded shadow-lg">
+      <!-- Cột bên trái (3 phần) -->
+      <div class="col-md-4 d-flex align-items-center ">
+        <div class="text-center my-4">
+          <h1 class=" text-dark">Apple 🍏</h1>
+          <p class="mt-4 text-dark">
+            Siêu phẩm nhà Táo với thiết kế sang trọng, hiệu năng mạnh mẽ và hệ điều hành iOS mượt mà,
+            mang đến trải nghiệm đẳng cấp.
+          </p>
+        </div>
+      </div>
+
+      <!-- Cột bên phải (8 phần) -->
+      <div class="col-md-8">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner rounded-3 ">
+            <div class="carousel-item active">
+              <img src="/photos/ban1.jpg" class="d-block w-100" style="max-height: 300px; max-width: 900px;" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="/photos/ban2.jpg" class="d-block w-100" style="max-height: 300px; max-width: 900px;" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="/photos/ban3.jpg" class="d-block w-100" style="max-height: 300px; max-width: 900px;" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Phần sản phẩm trưng bầy -->
+  <div class="container my-5">
+    <h2 class=" mb-4 fw-bold">Gợi ý cho bạn</h2>
+    <div class="row g-4">
+      <div class="col-md-3" th:each="item : ${prod}">
+        <div class="card product-card shadow-sm text-center border-0">
+          <!-- Ảnh sản phẩm -->
+
+          <!-- Ảnh sản phẩm có thể nhấn vào để xem chi tiết -->
+
+          <input type="hidden" name="id" th:value="${item.id}" />
+          <img th:src="${item.img}" alt="Product Image" class="card-img-top p-3"
+            style="height: 220px; object-fit: contain; cursor: pointer;" />
+          </a>
+
+          <div class="card-body">
+            <!-- Tên sản phẩm -->
+            <h6 class="card-title text-dark fw-bold" th:text="${item.title}"></h6>
+
+            <!-- Giá sản phẩm -->
+            <p class="text-danger fw-bold mb-2"
+              th:text="${#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT')} + ' VND'">
+            </p>
+            <a th:href="@{/ChitietSanpham(id=${item.id})}" class="btn btn-detail">
+              <i class="fas fa-info-circle"></i> Xem chi tiết
+            </a><br>
+
+            <!-- Nút "Mua ngay" -->
+            <form th:action="@{/Giohang}" method="post">
+              <input type="hidden" name="id" th:value="${item.id}" />
+              <input type="hidden" name="price" th:value="${item.price}" />
+              <button type="submit" class="btn-custom w-100">
+                <i class="fas fa-shopping-cart"></i> Mua ngay
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Phần thông tin liên hệ và giới thiệu -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Thông tin SHOP</h4>
+        <p class="footer-text">
+          AppShop là thương hiệu hàng đầu về thời trang bền vững, cam kết mang
+          đến những sản phẩm chất lượng và thân thiện với môi trường.
+        </p>
+        <div class="contact-info">
+          <p>
+            <i class="fas fa-map-marker-alt"></i> 14 Đường Trần Đình Nam, Quận
+            Cẩm Lệ, TP.Đà Nẵng
+          </p>
+          <p><i class="fas fa-phone"></i>0337198492</p>
+          <p><i class="fas fa-envelope"></i> dinhduc9977@gmail.com</p>
+        </div>
+      </div>
+
+      <!-- Phần liên kết nhanh -->
+      <div class="footer-section">
+        <h4 class="footer-heading"></h4>
+        <ul class="footer-links">
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="#">Sản phẩm</a></li>
+          <li><a href="#">Giới thiệu</a></li>
+          <li><a href="#">Liên hệ</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+          <li><a href="#">Điều khoản sử dụng</a></li>
+        </ul>
+      </div>
+
+      <!-- Phần mạng xã hội -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Theo dõi chúng tôi</h4>
+        <div class="social-media">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <!-- Phần đăng ký nhận tin -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Hỗ trợ trức tuyến</h4>
+        <p class="footer-text">
+          Nhận thông tin khuyến mãi và cập nhật mới nhất từ AppShop.
+        </p>
+        <form class="subscribe-form">
+          <input type="email" placeholder="Nhập email của bạn" required />
+          <button type="submit">Đăng ký</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Phần bản quyền -->
+    <div class="footer-bottom">
+      <p class="mb-0">© 2025 AppShop, Inc. Bảo lưu mọi quyền.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

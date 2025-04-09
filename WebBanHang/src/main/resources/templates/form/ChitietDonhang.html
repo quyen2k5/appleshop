@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Apple 🍏</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #ffffff);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    header {
+      background: linear-gradient(90deg, #0d6efd, #6610f2);
+      color: white;
+      padding: 15px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-link {
+      color: #fff !important;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      color: #ffc107 !important;
+      transform: translateY(-2px);
+    }
+
+    h2 {
+      color: #0d6efd;
+      margin-top: 80px;
+      text-align: center;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+      flex: 1;
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .order-info {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .order-info p {
+      margin: 10px 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .order-info strong {
+      color: #0d6efd;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    th,
+    td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #0d6efd;
+      color: white;
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background-color: #f8f9fa;
+    }
+
+    .product-img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .product-img:hover {
+      transform: scale(1.1);
+    }
+
+    .btn-back {
+      background: linear-gradient(90deg, #6c757d, #495057);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-back:hover {
+      background: linear-gradient(90deg, #495057, #6c757d);
+      transform: translateY(-2px);
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* footer */
+    footer {
+      background-color: white;
+      /* Đổi màu nền thành trắng */
+      color: black;
+      /* Đổi màu chữ thành đen để dễ đọc */
+      text-align: center;
+      padding: 20px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    footer a {
+      color: #007bff;
+      /* Màu link giống với tông màu của Thegioididong */
+      transition: color 0.3s ease-in-out;
+    }
+
+    footer a:hover {
+      color: #0056b3;
+      /* Màu tối hơn khi hover */
+    }
+
+    .footer {
+      background-color: white;
+      /* Đổi màu nền thành trắng */
+      color: black;
+      /* Đổi màu chữ thành đen để dễ đọc */
+      padding: 40px 0;
+      font-family: "Arial", sans-serif;
+      box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+      /* Giữ hiệu ứng bóng nhẹ */
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 20px;
+    }
+
+    .footer-heading {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #010102;
+      /* Màu xanh giống với link của Thegioididong */
+    }
+
+    .footer-text {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      color: black;
+      /* Đảm bảo màu chữ dễ đọc trên nền trắng */
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      color: black;
+      /* Đổi màu link thành đen để đồng bộ */
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: #007bff;
+      /* Màu xanh khi hover để tạo điểm nhấn */
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 20px 0;
+      background-color: white;
+      /* Đổi màu nền footer bottom thành trắng */
+      margin-top: 20px;
+      border-top: 1px solid #ddd;
+      /* Thêm viền để phân cách */
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      font-size: 14px;
+      color: black;
+      /* Đổi màu chữ thành đen */
+    }
+  </style>
+</head>
+
+<body>
+  <header class="d-flex justify-content-between align-items-center">
+    <h1 class="ms-3">Chi tiết đơn hàng</h1>
+    <nav>
+      <ul class="nav">
+        <li><a href="/thienduonganmac" class="nav-link">Trang chủ</a></li>
+        <li>
+          <a href="/Quanlisanpham" class="nav-link"><i class="bi bi-box-seam"></i> Sản phẩm</a>
+        </li>
+        <li>
+          <a href="/Quanlinguoidung" class="nav-link"><i class="bi bi-people"></i> Người dùng</a>
+        </li>
+        <li>
+          <a href="/Danhmuc" class="nav-link"><i class="bi bi-tags"></i> Danh mục</a>
+        </li>
+        <li>
+          <a href="/Donhang" class="nav-link"><i class="bi bi-receipt"></i> Đơn hàng</a>
+        </li>
+        <li>
+          <a href="/Hethongquanli" class="nav-link"><i class="bi bi-gear"></i> Hệ thống quản lí</a>
+        </li>
+      </ul>
+    </nav>
+    <a href="/logout" class="btn btn-outline-light me-3">Đăng xuất</a>
+  </header>
+  <div class="container my-5">
+    <h2>Sản phẩm trong đơn hàng #<span th:text="${order.id}"></span></h2>
+
+    <div class="order-info">
+      <p>
+        <strong>Người đặt hàng:</strong>
+        <span th:text="${order.user.fullname}"></span>
+      </p>
+      <p>
+        <strong>Trạng thái:</strong>
+        <span th:if="${order.status}" class="text-success">Đã thanh toán</span>
+        <span th:unless="${order.status}" class="text-danger">Chưa thanh toán</span>
+      </p>
+      <p>
+        <strong>Ngày tạo:</strong>
+        <span th:text="${order.createdDate}"></span>
+      </p>
+    </div>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Ảnh</th>
+          <th>Tên sản phẩm</th>
+          <th>Số lượng</th>
+          <th>Giá</th>
+          <th>Tổng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="detail : ${order.ordersdetails}">
+          <td th:text="${detail.id}"></td>
+          <td>
+            <img th:src="${detail.product.img}" alt="Ảnh sản phẩm" class="product-img" />
+          </td>
+          <td th:text="${detail.product.title}"></td>
+          <td th:text="${detail.quantity}"></td>
+          <td th:text="${#numbers.formatDecimal(detail.price, 0, 'COMMA', 0, 'POINT')} + ' VND'"></td>
+          <td th:text="${#numbers.formatDecimal(detail.quantity * detail.price, 0, 'COMMA', 0, 'POINT')} + ' VND'"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a href="/Donhang" class="btn btn-back">
+      <i class="bi bi-arrow-left"></i> Quay lại
+    </a>
+  </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Phần thông tin liên hệ và giới thiệu -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Thông tin SHOP</h4>
+        <p class="footer-text">
+          AppShop là thương hiệu hàng đầu về thời trang bền vững, cam kết mang
+          đến những sản phẩm chất lượng và thân thiện với môi trường.
+        </p>
+        <div class="contact-info">
+          <p>
+            <i class="fas fa-map-marker-alt"></i> 14 Đường Trần Đình Nam, Quận
+            Cẩm Lệ, TP.Đà Nẵng
+          </p>
+          <p><i class="fas fa-phone"></i>0337198492</p>
+          <p><i class="fas fa-envelope"></i> dinhduc9977@gmail.com</p>
+        </div>
+      </div>
+
+      <!-- Phần liên kết nhanh -->
+      <div class="footer-section">
+        <h4 class="footer-heading"></h4>
+        <ul class="footer-links">
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="#">Sản phẩm</a></li>
+          <li><a href="#">Giới thiệu</a></li>
+          <li><a href="#">Liên hệ</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+          <li><a href="#">Điều khoản sử dụng</a></li>
+        </ul>
+      </div>
+
+      <!-- Phần mạng xã hội -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Theo dõi chúng tôi</h4>
+        <div class="social-media">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <!-- Phần đăng ký nhận tin -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Hỗ trợ trức tuyến</h4>
+        <p class="footer-text">
+          Nhận thông tin khuyến mãi và cập nhật mới nhất từ AppShop.
+        </p>
+        <form class="subscribe-form">
+          <input type="email" placeholder="Nhập email của bạn" required />
+          <button type="submit">Đăng ký</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Phần bản quyền -->
+    <div class="footer-bottom">
+      <p class="mb-0">© 2025 AppShop, Inc. Bảo lưu mọi quyền.</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
