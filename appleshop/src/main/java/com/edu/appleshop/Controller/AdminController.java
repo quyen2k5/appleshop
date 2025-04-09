@@ -17,7 +17,6 @@ import com.edu.appleshop.service.ProductService;
 import com.edu.appleshop.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
-
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
